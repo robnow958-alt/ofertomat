@@ -15,7 +15,7 @@ export default {
         }
 
         const groqPayload = {
-          model: input.model || 'llama-3.3-70b-versatile',
+          model: input.model || 'openai/gpt-oss-120b',
           messages: input.messages,
           max_tokens: input.max_tokens || 800,
           temperature: input.temperature ?? 0.75,
