@@ -1250,7 +1250,7 @@ Pisz po polsku. Ton: ${selectedTone}. Maksymalnie 200 słów. Zero pustych fraze
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        model: 'llama-3.3-70b-versatile',
+        model: model: 'openai/gpt-oss-120b',
         messages: [
           { role: 'system', content: 'Jesteś ekspertem od ofert handlowych B2B. Piszesz po polsku. Twoje oferty są konkretne, profesjonalne i przekonujące. Bez lania wody.' },
           { role: 'user', content: prompt }
