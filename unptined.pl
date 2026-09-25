@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oferty PDF na zlecenie — UNPRINTED</title>
+<meta name="description" content="Wysyłasz zakres, ceny, warunki. Dostajesz gotowy PDF do wysłania klientowi.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0c0d;
+    --bg-alt:#131517;
+    --text:#e7e5e0;
+    --text-dim:#8a8d90;
+    --line:#232629;
+    --accent:#5c86a3;
+    --accent-dim:#375467;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Newsreader',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
+  }
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  section{
+    padding:96px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+
+  /* HERO */
+  .hero{padding-top:120px;}
+  .hero h1{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    line-height:1.15;
+    max-width:14ch;
+    opacity:0;
+    animation:rise .7s ease-out .1s forwards;
+  }
+  .hero .sub{
+    margin-top:28px;
+    font-size:1.15rem;
+    color:var(--text-dim);
+    max-width:36ch;
+    opacity:0;
+    animation:rise .7s ease-out .3s forwards;
+  }
+  .hero .cta-row{
+    margin-top:40px;
+    opacity:0;
+    animation:rise .7s ease-out .5s forwards;
+  }
+  @keyframes rise{
+    from{opacity:0; transform:translateY(10px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero h1,.hero .sub,.hero .cta-row{animation:none; opacity:1;}
+  }
+
+  .btn{
+    display:inline-block;
+    background:var(--accent);
+    color:#0b0c0d;
+    font-family:'IBM Plex Sans',sans-serif;
+    font-weight:600;
+    font-size:1rem;
+    padding:14px 28px;
+    border:none;
+    border-radius:2px;
+    text-decoration:none;
+    cursor:pointer;
+    transition:background .15s ease;
+  }
+  .btn:hover, .btn:focus-visible{background:#6f9bb8;}
+  .btn:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
+  .btn-ghost{
+    display:inline-block;
+    color:var(--text-dim);
+    font-size:0.95rem;
+    margin-left:20px;
+    text-decoration:underline;
+    text-decoration-color:var(--line);
+  }
+  .btn-ghost:hover{color:var(--text);}
+
+  /* JAK TO DZIAŁA */
+  .steps{
+    display:flex;
+    flex-direction:column;
+    gap:40px;
+    margin-top:48px;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:20px;
+    align-items:start;
+  }
+  .step .num{
+    font-family:'Newsreader',serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:var(--accent);
+    line-height:1;
+  }
+  .step h3{font-size:1.15rem; font-weight:500; margin-bottom:6px;}
+  .step p{color:var(--text-dim); font-size:0.98rem; max-width:42ch;}
+
+  /* PRZYKŁADY */
+  .examples{
+    display:flex;
+    flex-direction:column;
+    gap:1px;
+    margin-top:40px;
+    border-top:1px solid var(--line);
+  }
+  .example{
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    gap:16px;
+  }
+  .example .name{font-size:1.02rem;}
+  .example .meta{color:var(--text-dim); font-size:0.9rem; white-space:nowrap;}
+  .examples-note{
+    margin-top:20px;
+    font-size:0.9rem;
+    color:var(--text-dim);
+    font-style:italic;
+  }
+
+  /* CENNIK */
+  .pricing{
+    display:flex;
+    flex-direction:column;
+    margin-top:40px;
+    border-top:1px solid var(--line);
+  }
+  .price-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .price-row.featured{background:var(--bg-alt); margin:0 -24px; padding:26px 24px;}
+  .price-row .plan-name{font-size:1.05rem;}
+  .price-row .plan-desc{color:var(--text-dim); font-size:0.88rem; margin-top:4px;}
+  .price-row .plan-price{
+    font-family:'Newsreader',serif;
+    font-size:1.6rem;
+    white-space:nowrap;
+  }
+
+  /* FORMULARZ */
+  .form-section h2{font-size:1.9rem; max-width:20ch;}
+  .form-section .sub{color:var(--text-dim); margin-top:14px; max-width:40ch;}
+  form{margin-top:40px; display:flex; flex-direction:column; gap:20px;}
+  label{font-size:0.9rem; color:var(--text-dim); display:block; margin-bottom:8px;}
+  input, textarea{
+    width:100%;
+    background:var(--bg-alt);
+    border:1px solid var(--line);
+    color:var(--text);
+    font-family:'IBM Plex Sans',sans-serif;
+    font-size:1rem;
+    padding:12px 14px;
+    border-radius:2px;
+  }
+  input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:1px;
+    border-color:var(--accent);
+  }
+  textarea{min-height:140px; resize:vertical;}
+  .form-status{font-size:0.9rem; margin-top:4px; min-height:1.2em;}
+  .form-status.ok{color:var(--accent);}
+  .form-status.err{color:#c0645a;}
+
+  footer{
+    padding:40px 0 60px;
+    color:var(--text-dim);
+    font-size:0.85rem;
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <h1>Masz wycenę.<br>Nie masz oferty.</h1>
+    <p class="sub">Wysyłasz zakres, ceny, warunki — nawet w jednej wiadomości. Dostajesz gotowy PDF do wysłania klientowi.</p>
+    <div class="cta-row">
+      <a href="#formularz" class="btn">Zleć przygotowanie oferty</a>
+      <a href="#jak-to-dziala" class="btn-ghost">Jak to działa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- JAK TO DZIAŁA -->
+<section id="jak-to-dziala">
+  <div class="wrap">
+    <h2>Jak to działa</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <div>
+          <h3>Wysyłasz informacje</h3>
+          <p>Może być nawet zwykła wiadomość, notatka albo stara wycena — cokolwiek masz.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <div>
+          <h3>Porządkuję zakres, ceny, terminy i treść</h3>
+          <p>Robię z tego dokument, który wygląda jak przygotowała go firma, nie jak notatka z telefonu.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <div>
+          <h3>Dostajesz gotowy PDF</h3>
+          <p>Do wysłania klientowi bez dalszej obróbki.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRZYKŁADY -->
+<section id="przykłady">
+  <div class="wrap">
+    <h2>Przykłady</h2>
+    <div class="examples">
+      <div class="example">
+        <span class="name">Oferta — montaż instalacji hydraulicznej</span>
+        <span class="meta">PDF, 2 strony</span>
+      </div>
+      <div class="example">
+        <span class="name">Oferta — remont łazienki, pakiet materiał + robocizna</span>
+        <span class="meta">PDF, 3 strony</span>
+      </div>
+      <div class="example">
+        <span class="name">Oferta — usługa serwisowa, umowa cykliczna</span>
+        <span class="meta">PDF, 2 strony</span>
+      </div>
+    </div>
+    <p class="examples-note">— zastąp linkami do rzeczywistych PDF-ów, gdy będziesz mieć pierwsze 2–3 gotowe egzemplarze.</p>
+  </div>
+</section>
+
+<!-- CENNIK -->
+<section id="cennik">
+  <div class="wrap">
+    <h2>Cennik</h2>
+    <div class="pricing">
+      <div class="price-row">
+        <div>
+          <div class="plan-name">Basic</div>
+          <div class="plan-desc">Jedna oferta, do 2 stron</div>
+        </div>
+        <div class="plan-price">149 zł</div>
+      </div>
+      <div class="price-row featured">
+        <div>
+          <div class="plan-name">Pro</div>
+          <div class="plan-desc">Jedna oferta, pełna redakcja i formatowanie</div>
+        </div>
+        <div class="plan-price">229 zł</div>
+      </div>
+      <div class="price-row">
+        <div>
+          <div class="plan-name">Pakiet 5 ofert</div>
+          <div class="plan-desc">Dla firm wysyłających oferty regularnie</div>
+        </div>
+        <div class="plan-price">799 zł</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FORMULARZ -->
+<section class="form-section" id="formularz">
+  <div class="wrap">
+    <h2>Potrzebujesz oferty?</h2>
+    <p class="sub">Wklej informacje, jakie masz — resztę ogarniam.</p>
+
+    <!--
+      INSTRUKCJA (1 minuta):
+      1. Wejdź na formspree.io, zaloguj się (za darmo, bez karty).
+      2. Utwórz formularz, skopiuj swój endpoint (wygląda jak https://formspree.io/f/xxxxxxx).
+      3. Wklej go w miejsce action="" poniżej.
+      Formspree za darmo obsługuje 50 zgłoszeń/mies. — wystarczy na start.
+    -->
+    <form id="offer-form" action="https://formspree.io/f/TWOJ_ENDPOINT" method="POST">
+      <div>
+        <label for="name">Imię i nazwisko / firma</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div>
+        <label for="email">E-mail</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div>
+        <label for="details">Zakres, ceny, warunki</label>
+        <textarea id="details" name="details" placeholder="Wklej wycenę, notatkę albo opisz w kilku zdaniach, co ma znaleźć się w ofercie." required></textarea>
+      </div>
+      <div>
+        <button type="submit" class="btn">Wyślij i zamów</button>
+        <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">UNPRINTED — oferty na zlecenie</div>
+</footer>
+
+<script>
+  const form = document.getElementById('offer-form');
+  const status = document.getElementById('form-status');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    status.textContent = 'Wysyłanie...';
+    status.className = 'form-status';
+    try {
+      const res = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        status.textContent = 'Wysłano. Odpiszę w ciągu 24h.';
+        status.className = 'form-status ok';
+        form.reset();
+      } else {
+        throw new Error();
+      }
+    } catch {
+      status.textContent = 'Coś nie zadziałało — napisz bezpośrednio na maila.';
+      status.className = 'form-status err';
+    }
+  });
+</script>
+
+</body>
+</html>
